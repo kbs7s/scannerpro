@@ -1,0 +1,8 @@
+camera scan-line image-plus file-up file-plus file-text files folder-open save undo-2 redo-2 settings languages circle-help
+plus trash-2 copy rotate-cw rotate-ccw flip-horizontal-2 flip-vertical-2 crop wand-sparkles sun contrast droplet eraser
+scan-text download share-2 printer zoom-in zoom-out maximize minimize expand shrink columns-2 square-split-horizontal
+check x chevron-left chevron-right chevron-down chevron-up grip-vertical star search filter tag archive archive-restore
+flashlight flashlight-off timer repeat refresh-cw circle-alert info wifi wifi-off hard-drive activity printer-check
+layers list-checks square-check square menu house book-open id-card receipt file-stack scissors merge split
+sliders-horizontal palette type pause play circle-stop pencil scan move ruler file-image file-archive package
+monitor smartphone usb cpu database shield-check sparkles ellipsis-vertical log-out library heart folder

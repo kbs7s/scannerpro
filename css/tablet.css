@@ -1,0 +1,18 @@
+/* Tablet (700–1099px): split workspace, thumbnails rail + canvas + contextual panel */
+.brand-text .brand-sub { display: none; }
+.top-actions .tb span:not(.lang-badge) { display: none; }
+.top-actions .tb { padding: 0 9px; }
+.view-workspace { grid-template-columns: 120px minmax(0, 1fr) 300px; }
+.thumbs { padding: 6px; gap: 8px; }
+.thumb .tlabel { display: none; }
+.side-tools { justify-content: center; }
+.side-tools .ib { width: 34px; height: 34px; }
+.panel-tabs button span { display: none; }
+.panel-tabs button { padding: 10px 2px; }
+.project-title { max-width: 26vw; }
+.date-range input { width: 128px; }
+@media (orientation: portrait) {
+  .view-workspace { grid-template-columns: 110px minmax(0, 1fr); grid-template-rows: minmax(0, 1fr) minmax(240px, 42%); }
+  .sidebar { grid-row: 1 / span 2; }
+  .panel { grid-column: 2; border-inline-start: 0; border-top: 1px solid var(--line); }
+}
