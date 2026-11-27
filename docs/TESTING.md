@@ -16,6 +16,7 @@ ffmpeg -loop 1 -i tests/fixtures/doc-photo.jpg -vf "scale=768:960,pad=1280:960:2
 node tests/camera-test.mjs                 # camera scan with Chromium's simulated camera
 node tests/diagnostics-test.mjs            # in-app diagnostic checks + language switch
 node tests/bridge-escl-test.mjs            # scanner bridge against a mock eSCL scanner
+node tests/local-offline-test.mjs          # downloaded copy: works with the starter closed and no network
 ```
 
 Test images are generated, not real photos: `doc-photo.jpg` is a bilingual (Arabic/English) "medical report" drawn with the Cairo font, then placed in perspective on a dark background with uneven lighting and a shadow. Its true corner positions are stored in `doc-photo.corners.json`. `doc-skew.png` is a flat page rotated by exactly 4°.
@@ -54,6 +55,9 @@ All checks run: service worker active, all 66 files cached, OpenCV, PDF.js, pdf-
 
 ### Scanner bridge (`tests/bridge-escl-test.mjs`), 9 of 9 passed, mock device only
 Against a mock eSCL scanner: CORS allows the GitHub Pages site and refuses other sites, the Private Network Access header is sent, the scanner is listed by name, a flatbed scan returns the page unchanged, the scan settings sent to the scanner are correct (source, colour mode, 300 DPI, A4 size), and a duplex feeder scan returns all pages.
+
+### Downloaded copy, fully offline (`tests/local-offline-test.mjs`), 7 of 7 passed (27 November 2026)
+The app was started from `run-local/server.js`, a photo was scanned and OCR'd, and all files were cached. Then the starter was stopped and the browser was reopened with the network switched off. The app opened, the saved document and its OCR text were still there, OCR ran again in Arabic and English, and a PDF was exported. The full `tests/e2e.mjs` suite also passed 24 of 24 when served by the starter. The Windows `.bat` and macOS `.command` starters were not run (no Windows or Mac available); the Linux starter was.
 
 ## Bugs found by these tests and fixed
 

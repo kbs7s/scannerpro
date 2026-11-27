@@ -68,7 +68,26 @@ The repository contains a ready workflow (`.github/workflows/deploy.yml`).
 
 No build step, bundler or `npm install` is needed. All paths are relative, so the app works in any sub-folder.
 
-### Running locally
+### Saving and offline use
+
+- Every document, page, edit and OCR result is saved automatically inside your browser on your device (IndexedDB). Nothing is uploaded. After the first save the app asks the browser to keep this data permanently so it isn't cleared when space runs low.
+- After the first visit, the whole app, including the OCR models, is stored for offline use. You can turn off Wi-Fi and mobile data and keep scanning, running OCR and exporting PDFs.
+- To keep a copy outside the browser, use **Save** (one project as a `.sspz` file) or **Settings → Storage → Backup** (everything as a `.zip`). Open either file later to restore.
+
+### Run it on your own computer (no website, no internet)
+
+1. On GitHub, press **Code → Download ZIP** and unzip it (or `git clone` the repository).
+2. Open the `run-local` folder and double-click the starter for your system:
+   - Windows: `start-windows.bat`
+   - macOS: `start-mac.command` (the first time, right-click it and choose **Open**)
+   - Linux: `start-linux.sh`
+3. The app opens at `http://localhost:8090/` in your browser. Keep the small window open while you work.
+
+The starter needs [Node.js](https://nodejs.org) (or Python as a fallback). It serves only the app's own files and only to this computer. After the first run the app is cached by the browser, so `http://localhost:8090/` keeps opening, with all your saved documents, even when the starter is closed and there is no internet. You can also install it from there as an app (the install icon in Chrome or Edge's address bar).
+
+Documents saved at `http://localhost:8090/` are separate from the ones saved on the GitHub Pages site, because browsers keep each address's data apart. Use **Save** / **Backup** and open the file on the other one to move documents across.
+
+### Running locally for development
 
 Any static server works. The camera requires HTTPS or `localhost`.
 
@@ -116,6 +135,7 @@ libs/                   OpenCV.js 4.10, jscanify 1.4, PDF.js 3.11, pdf-lib 1.17,
 models/                 ara / eng / fra .traineddata.gz (tessdata_fast)
 assets/                 Icons, Cairo font (OFL), images
 bridge/                 Optional scanner helper (Node.js, NAPS2 / eSCL)
+run-local/              Starters to run the app from a downloaded copy (no website needed)
 tools/                  Precache generator, icon builders
 tests/                  Test fixtures and Playwright tests
 docs/TESTING.md         What was tested and how

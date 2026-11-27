@@ -970,6 +970,13 @@ function updateStatus() {
   $('#st-current').textContent = p ? t('status.current', { n: state.cur + 1 }) : '';
   $('#st-res').textContent = p ? `${p.procW || p.origW}×${p.procH || p.origH}px` : '';
 }
+// Ask once per session, right after the first save, that the browser never evicts saved documents.
+let persistTried = false;
+bus.on('doc-saved', async () => {
+  if (persistTried) return; persistTried = true;
+  const s = await storageInfo().catch(() => ({}));
+  if (!s.persisted) await requestPersistence();
+});
 async function checkStorageWarnings() {
   const s = await storageInfo();
   if (s.quota && s.usage / s.quota > 0.85) toast(t('storage.nearlyFull'), 'warn', { ms: 10000 });
